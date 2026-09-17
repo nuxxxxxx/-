@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>♡ Nuestro Primer Mes ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FONDO -->
+    <div id="petalBackground"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🌸 OUR FIRST MONTH 🌸
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="showSection('home')">Inicio</button>
+            <button onclick="showGame()">🎮 Juego</button>
+            <button onclick="showSongs()">🎵 Canciones</button>
+            <button onclick="showLetter()">💌 Carta</button>
+        </div>
+
+    </nav>
+
+
+    <!-- ============================= -->
+    <!-- INICIO -->
+    <!-- ============================= -->
+
+    <section id="home" class="section active">
+
+        <div class="hero">
+
+            <div class="floating-heart heart1">♡</div>
+            <div class="floating-heart heart2">♥</div>
+            <div class="floating-heart heart3">♡</div>
+
+            <p class="small-title">
+                ✦ UN PEQUEÑO REGALO ✦
+            </p>
+
+            <h1>
+                Nuestro primer
+                <span>mes</span>
+            </h1>
+
+            <p class="hero-text">
+                Una pequeña aventura hecha especialmente para ti ♡
+            </p>
+
+            <div class="date-box">
+                🌸 01 MONTH TOGETHER 🌸
+            </div>
+
+            <button class="main-button" onclick="showGame()">
+                COMENZAR AVENTURA ✦
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- JUEGO -->
+    <!-- ============================= -->
+
+    <section id="game" class="section">
+
+        <div class="section-header">
+
+            <p>🌸 LEVEL <span id="levelNumber">1</span> / 3 🌸</p>
+
+            <h2>
+                Atrapa los pétalos
+            </h2>
+
+            <p>
+                Recoge todos los pétalos antes de que yo te alcance ♡
+            </p>
+
+        </div>
+
+
+        <div class="game-wrapper">
+
+            <div class="game-hud">
+
+                <div>
+                    NIVEL:
+                    <strong id="hudLevel">1</strong>
+                </div>
+
+                <div>
+                    🌸 PÉTALOS:
+                    <strong>
+                        <span id="petalCount">0</span>/<span id="petalTotal">5</span>
+                    </strong>
+                </div>
+
+                <div>
+                    🔐 LETRAS:
+                    <strong id="letterCount">0</strong>/3
+                </div>
+
+            </div>
+
+
+            <div class="canvas-container">
+
+                <canvas
+                    id="gameCanvas"
+                    width="1000"
+                    height="560">
+                </canvas>
+
+                <!-- OVERLAY DEL NIVEL -->
+                <div id="levelOverlay" class="game-overlay hidden">
+
+                    <div class="overlay-card">
+
+                        <div class="big-flower">
+                            🌸
+                        </div>
+
+                        <h2 id="levelCompleteTitle">
+                            ¡NIVEL COMPLETADO!
+                        </h2>
+
+                        <p>
+                            Has conseguido una letra secreta:
+                        </p>
+
+                        <div id="secretLetter" class="secret-letter">
+                            A
+                        </div>
+
+                        <p id="levelCompleteText">
+                            Una pequeña parte del secreto... ♡
+                        </p>
+
+                        <button
+                            class="main-button"
+                            onclick="goToSong()">
+                            VER MI DEDICACIÓN 🎵
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GAME OVER -->
+                <div id="gameOverOverlay" class="game-overlay hidden">
+
+                    <div class="overlay-card">
+
+                        <div class="big-flower">
+                            💗
+                        </div>
+
+                        <h2>
+                            ¡TE ALCANCÉ! 😈
+                        </h2>
+
+                        <p>
+                            No te preocupes, inténtalo otra vez ♡
+                        </p>
+
+                        <button
+                            class="main-button"
+                            onclick="restartLevel()">
+                            REINTENTAR
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLES PC -->
+
+            <div class="controls-info">
+
+                <div>
+                    <span>←</span>
+                    <span>→</span>
+                    MOVER
+                </div>
+
+                <div>
+                    <span>SPACE</span>
+                    SALTAR
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLES CELULAR -->
+
+            <div class="mobile-controls">
+
+                <button id="leftBtn">←</button>
+
+                <button id="jumpBtn">↑</button>
+
+                <button id="rightBtn">→</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CANCIONES -->
+    <!-- ============================= -->
+
+    <section id="songs" class="section">
+
+        <div class="section-header">
+
+            <p>♡ UNA CANCIÓN PARA CADA NIVEL ♡</p>
+
+            <h2>
+                Mis dedicatorias
+            </h2>
+
+            <p>
+                Porque algunas cosas se sienten mejor con música.
+            </p>
+
+        </div>
+
+
+        <div class="song-progress">
+
+            <div class="progress-item" id="songProgress1">
+                <span>01</span>
+                Noche de los Dos
+            </div>
+
+            <div class="line"></div>
+
+            <div class="progress-item" id="songProgress2">
+                <span>02</span>
+                Se Me Antoja
+            </div>
+
+            <div class="line"></div>
+
+            <div class="progress-item" id="songProgress3">
+                <span>03</span>
+                Sexto Sentido
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- CANCIÓN 1 -->
+        <!-- ============================= -->
+
+        <article class="song-card" id="songCard1">
+
+            <div class="song-cover">
+
+                <img
+                    src="nochedelosdos.png"
+                    alt="Noche de los Dos">
+
+                <div class="vinyl">
+                    ◉
+                </div>
+
+            </div>
+
+
+            <div class="song-info">
+
+                <p class="song-number">
+                    LEVEL 01
+                </p>
+
+                <h2>
+                    Noche de los Dos
+                </h2>
+
+                <h3>
+                    Murder
+                </h3>
+
+
+                <!-- MP3 -->
+                <div class="music-player">
+
+                    <audio controls preload="metadata">
+
+                        <source
+                            src="3.mp3"
+                            type="audio/mpeg">
+
+                        Tu navegador no puede reproducir este audio.
+
+                    </audio>
+
+                </div>
+
+
+                <div class="lyrics-box">
+
+                    <div class="lyrics-label">
+                        ♫ PARA TI ♫
+                    </div>
+
+                    <div class="animated-lyrics">
+                        <span>
+                            Una canción para nosotros ♡
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ============================= -->
+        <!-- CANCIÓN 2 -->
+        <!-- ============================= -->
+
+        <article class="song-card hidden-song" id="songCard2">
+
+            <div class="song-cover">
+
+                <img
+                    src="kodigo.png"
+                    alt="Se Me Antoja">
+
+                <div class="vinyl">
+                    ◉
+                </div>
+
+            </div>
+
+
+            <div class="song-info">
+
+                <p class="song-number">
+                    LEVEL 02
+                </p>
+
+                <h2>
+                    Se Me Antoja
+                </h2>
+
+                <h3>
+                    Kodigo 36
+                </h3>
+
+
+                <!-- MP3 -->
+                <div class="music-player">
+
+                    <audio controls preload="metadata">
+
+                        <source
+                            src="1.mp3"
+                            type="audio/mpeg">
+
+                        Tu navegador no puede reproducir este audio.
+
+                    </audio>
+
+                </div>
+
+
+                <div class="lyrics-box">
+
+                    <div class="lyrics-label">
+                        ♫ PARA TI ♫
+                    </div>
+
+                    <div class="animated-lyrics">
+                        <span>
+                            Una canción para ti ♡
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ============================= -->
+        <!-- CANCIÓN 3 -->
+        <!-- ============================= -->
+
+        <article class="song-card hidden-song" id="songCard3">
+
+            <div class="song-cover">
+
+                <img
+                    src="sextosentido.jpg"
+                    alt="Sexto Sentido">
+
+                <div class="vinyl">
+                    ◉
+                </div>
+
+            </div>
+
+
+            <div class="song-info">
+
+                <p class="song-number">
+                    LEVEL 03
+                </p>
+
+                <h2>
+                    Sexto Sentido
+                </h2>
+
+                <h3>
+                    008racca
+                </h3>
+
+
+                <!-- MP3 -->
+                <div class="music-player">
+
+                    <audio controls preload="metadata">
+
+                        <source
+                            src="2.mp3"
+                            type="audio/mpeg">
+
+                        Tu navegador no puede reproducir este audio.
+
+                    </audio>
+
+                </div>
+
+
+                <div class="lyrics-box">
+
+                    <div class="lyrics-label">
+                        ♫ PARA TI ♫
+                    </div>
+
+                    <div class="animated-lyrics">
+                        <span>
+                            Una canción que me recuerda a ti ♡
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <div class="song-navigation">
+
+            <button
+                id="nextSongButton"
+                class="main-button"
+                onclick="continueFromSong()">
+                CONTINUAR ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- DESBLOQUEO -->
+    <!-- ============================= -->
+
+    <section id="unlock" class="section">
+
+        <div class="unlock-container">
+
+            <div class="lock-icon">
+                🔐
+            </div>
+
+            <p>
+                HAS COMPLETADO LOS 3 NIVELES
+            </p>
+
+            <h2>
+                El secreto está completo...
+            </h2>
+
+            <p>
+                Introduce las tres letras que encontraste.
+            </p>
+
+
+            <div class="code-inputs">
+
+                <input
+                    id="code1"
+                    maxlength="1"
+                    autocomplete="off">
+
+                <span>♡</span>
+
+                <input
+                    id="code2"
+                    maxlength="1"
+                    autocomplete="off">
+
+                <span>♡</span>
+
+                <input
+                    id="code3"
+                    maxlength="1"
+                    autocomplete="off">
+
+            </div>
+
+
+            <button
+                class="main-button"
+                onclick="checkCode()">
+                DESBLOQUEAR CARTA 💌
+            </button>
+
+
+            <p id="codeMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CARTA -->
+    <!-- ============================= -->
+
+    <section id="letter" class="section">
+
+        <div class="letter-container">
+
+            <div class="letter-decoration">
+                🌸 ♡ 🌸
+            </div>
+
+            <p class="letter-date">
+                Para mi persona favorita
+            </p>
+
+            <h1>
+                ¡Hola, mi amor!
+            </h1>
+
+
+            <div class="letter-text">
+
+                <p>
+                    Hoy cumplimos nuestro primer mes juntos y de verdad que ni te imaginas todo lo que me está pasando por la cabeza y por el corazón al escribirte esto. Siento que este mes se fue volando en un abrir y cerrar de ojos, pero al mismo tiempo siento como si te conociera de toda la vida. Es una sensación tan extraña pero tan bonita... como si mi vida antes de ti hubiera sido completamente diferente y, desde que llegaste tú, todo hubiera tomado un color y un sentido mucho más lindo. No hay un solo día desde que empezamos esta historia en el que no me ponga a pensar en lo infinitamente afortunada que soy por tenerte a mi lado.
+                </p>
+
+                <p>
+                    Si te soy totalmente sincera, escribir sobre lo que siento por ti a veces me cuesta, no porque no lo tenga claro, sino porque siento que las palabras comunes no alcanzan para explicar la dimensión de todo esto. Pero hoy quiero intentarlo con toda mi alma: me encantas, me fascinas y me tienes completamente enamorada. Me enamora absolutamente todo de ti; tu personalidad única, esa energía tan bonita y contagiosa que transmites desde que llegas a un lugar, la forma en que me haces reír de la nada, tus chistes, tu voz y esa manera tan tuya de hacerme sentir la persona más especial del planeta sin siquiera proponértelo. Con un solo mensaje tuyo, con solo ver tu nombre en la pantalla de mi teléfono, se me ilumina el día entero y me saco una sonrisa de oreja a oreja que ni yo misma puedo disimular.
+                </p>
+
+                <p>
+                    Estar contigo se ha convertido en mi estado favorito. Te convertiste en mi lugar seguro, en ese refugio único al que siempre quiero volver cuando el mundo afuera se pone pesado o caótico. Contigo no tengo que fingir nada, no tengo que pretender ser alguien diferente; me das una paz y una seguridad tan gigantescas que a tu lado me siento libre para ser yo misma al cien por cien. Tus abrazos me dan una tranquilidad que nunca antes en mi vida había experimentado. Sabes que no soy una persona a la que le guste estar pegada a nadie, pero contigo todo es la excepción a la regla: por mí podría quedarme mil horas enredada en tus brazos y nunca en la vida me darían ganas de soltarte.
+                </p>
+
+                <p>
+                    En este poquito tiempo me he dado cuenta de que contigo todo fluye de una forma tan bonita, tan natural y tan mágica que a veces me tengo que pellizcar para asegurarme de que no estoy soñando. Me tratas de una manera tan increíble, tan linda y tan atenta, que me enseñaste un lado del cariño que yo no conocía. Me das una seguridad enorme en mí misma y en lo nuestro, y eso es algo que te voy a agradecer siempre. Quiero que nunca, pero de verdad NUNCA, dudes de lo mucho que me importas y de todo lo que vales para mí. Si se trata de ti, quiero que sepas que yo sería capaz de absolutamente todo con tal de verte feliz, de sacarte una de tus sonrisas hermosas, de apoyarte en tus días buenos y sostenerte en los no tan buenos. Estar a tu lado me hace sentir en las nubes, como si no hubiera ningún otro lugar en todo el universo donde yo prefiriera estar que no fuera pegadita a ti.
+                </p>
+
+                <p>
+                    Gracias por regalarme este primer mes tan perfecto y tan lleno de momentos que me voy a guardar en el corazón para siempre. Gracias por cada beso que me hace sentir en el paraíso, por cada palabra bonita, por hacerme saltar de felicidad y por ser el niño más maravilloso y simpático que pude haber conocido jamás. Te amo con todo mi corazón, amor. Te amo con una fuerza que me sorprende a mí misma cada día más. Esto es apenas el primer pasito de un camino larguísimo que quiero recorrer agarrada de tu mano, y no me cabe duda de que nos esperan muchísimas cosas hermosas por vivir juntos.
+                </p>
+
+                <p class="signature">
+                    Con todo el amor de mi vida,
+                </p>
+
+            </div>
+
+
+            <button
+                class="main-button final-button"
+                onclick="startFinale()">
+                HAY ALGO MÁS... ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FINAL -->
+    <!-- ============================= -->
+
+    <div id="finalOverlay" class="final-overlay hidden">
+
+        <div class="final-background"></div>
+
+        <div class="final-sakura">
+            🌸
+        </div>
+
+
+        <div class="final-characters">
+
+            <img
+                id="finalBoy"
+                src="novio-removebg-preview.png"
+                alt="Novio">
+
+            <div id="kissHeart">
+                💗
+            </div>
+
+            <img
+                id="finalGirl"
+                src="yo-removebg-preview.png"
+                alt="Yo">
+
+        </div>
+
+
+        <div id="finalMessage" class="final-message">
+
+            <p class="final-small">
+                ♡ DESDE EL PRIMER DÍA HASTA HOY ♡
+            </p>
+
+            <h1>
+                TE AMO,
+                <span>MI NIÑO LINDO</span>
+            </h1>
+
+            <p>
+                Gracias por todo lo que me has hecho sentir,
+                por cada sonrisa, cada momento y cada recuerdo
+                que me has regalado.
+            </p>
+
+            <p>
+                Siento que mereces todo lo bonito del mundo
+                y aun así siento que me quedo corta intentando
+                explicarte lo importante que eres para mí.
+            </p>
+
+            <p>
+                Gracias por llegar a mi vida y hacer que este
+                primer mes sea algo tan especial.
+            </p>
+
+            <div class="final-phrase">
+                Este es apenas el comienzo de todos los
+                recuerdos que todavía nos faltan. ♡
+            </div>
+
+            <div class="final-hearts">
+                ♡ ♥ ♡
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+    <div id="toast"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
