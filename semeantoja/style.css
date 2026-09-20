@@ -5,7 +5,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Press+Start+2P&display=swap');
 
-
 :root {
 
     --pink: #ff77b7;
@@ -41,13 +40,11 @@
 
 }
 
-
 html {
 
     scroll-behavior: smooth;
 
 }
-
 
 body {
 
@@ -107,7 +104,6 @@ body {
 
 }
 
-
 .petal {
 
     position: absolute;
@@ -129,7 +125,6 @@ body {
 
 }
 
-
 @keyframes fall {
 
     from {
@@ -150,7 +145,6 @@ body {
 
 }
 
-
 @keyframes rotatePetal {
 
     0% {
@@ -168,7 +162,9 @@ body {
 }
 
 
-/* Brillitos Y2K */
+/* =========================================================
+   💿 NAVBAR Y2K
+========================================================= */
 
 .scanlines {
 
@@ -192,11 +188,6 @@ body {
     opacity: .35;
 
 }
-
-
-/* =========================================================
-   💿 NAVBAR Y2K
-========================================================= */
 
 .navbar {
 
@@ -245,9 +236,6 @@ body {
 
 }
 
-
-/* Detallito brillante */
-
 .navbar::before {
 
     content: "✦ ✧ ✦";
@@ -270,7 +258,6 @@ body {
 
 }
 
-
 .logo {
 
     font-family: 'Press Start 2P', monospace;
@@ -289,7 +276,6 @@ body {
 
 }
 
-
 .nav-buttons {
 
     display: flex;
@@ -297,7 +283,6 @@ body {
     gap: 7px;
 
 }
-
 
 .nav-buttons button {
 
@@ -332,7 +317,6 @@ body {
     transition: .2s;
 
 }
-
 
 .nav-buttons button:hover {
 
@@ -380,13 +364,11 @@ body {
 
 }
 
-
 .section.active {
 
     display: block;
 
 }
-
 
 .section-header {
 
@@ -397,7 +379,6 @@ body {
     margin: 0 auto 45px;
 
 }
-
 
 .section-header p:first-child {
 
@@ -425,7 +406,6 @@ body {
 
 }
 
-
 .section-header h2 {
 
     font-family: 'Press Start 2P';
@@ -445,7 +425,6 @@ body {
         5px 5px #ff9aca;
 
 }
-
 
 .section-header p:last-child {
 
@@ -480,9 +459,6 @@ body {
 
 }
 
-
-/* Estrellitas */
-
 .hero::before {
 
     content: "✦  ✧  ♡  ✦  ✧";
@@ -503,7 +479,6 @@ body {
 
 }
 
-
 .hero::after {
 
     content: "♡  ✿  ♡  ✿  ♡";
@@ -519,7 +494,6 @@ body {
     letter-spacing: 12px;
 
 }
-
 
 .small-title {
 
@@ -545,7 +519,6 @@ body {
 
 }
 
-
 .hero h1 {
 
     font-family: 'Press Start 2P';
@@ -566,13 +539,11 @@ body {
 
 }
 
-
 .hero h1 span {
 
     color: #ff3f9d;
 
 }
-
 
 .hero-text {
 
@@ -585,7 +556,6 @@ body {
     color: #704d78;
 
 }
-
 
 .date-box {
 
@@ -654,8 +624,9 @@ body {
 
     transition: .2s;
 
-}
+    touch-action: manipulation;
 
+}
 
 .main-button:hover {
 
@@ -663,22 +634,7 @@ body {
         translateY(-4px)
         scale(1.03);
 
-    background:
-
-        linear-gradient(
-            135deg,
-            #ff48a3,
-            #8fdfff
-        );
-
-    box-shadow:
-
-        0 7px 0 #7556b0,
-
-        0 12px 25px rgba(255,63,157,.3);
-
 }
-
 
 .main-button:active {
 
@@ -715,7 +671,6 @@ body {
 
 }
 
-
 .heart1 {
 
     left: 15%;
@@ -723,7 +678,6 @@ body {
     top: 20%;
 
 }
-
 
 .heart2 {
 
@@ -737,7 +691,6 @@ body {
 
 }
 
-
 .heart3 {
 
     left: 25%;
@@ -749,7 +702,6 @@ body {
     animation-delay: 2s;
 
 }
-
 
 @keyframes floatHeart {
 
@@ -784,7 +736,6 @@ body {
     margin: auto;
 
 }
-
 
 .game-hud {
 
@@ -821,13 +772,11 @@ body {
 
 }
 
-
 .game-hud strong {
 
     color: #ff3f9d;
 
 }
-
 
 .canvas-container {
 
@@ -850,7 +799,6 @@ body {
         0 20px 50px rgba(100,40,100,.2);
 
 }
-
 
 #gameCanvas {
 
@@ -887,8 +835,11 @@ body {
 
     justify-content: center;
 
-}
+    padding: 20px;
 
+    z-index: 50;
+
+}
 
 .game-overlay.hidden {
 
@@ -896,10 +847,13 @@ body {
 
 }
 
-
 .overlay-card {
 
     width: min(90%, 480px);
+
+    max-height: 90%;
+
+    overflow-y: auto;
 
     text-align: center;
 
@@ -928,7 +882,6 @@ body {
 
 }
 
-
 .overlay-card h2 {
 
     font-family: 'Press Start 2P';
@@ -943,17 +896,14 @@ body {
 
 }
 
-
 .big-flower {
 
     font-size: 60px;
 
     animation:
-
         flowerPulse 1.5s infinite;
 
 }
-
 
 @keyframes flowerPulse {
 
@@ -966,7 +916,6 @@ body {
     }
 
 }
-
 
 .secret-letter {
 
@@ -1007,11 +956,9 @@ body {
         0 0 25px rgba(255,114,182,.5);
 
     animation:
-
         secretGlow 1.2s infinite alternate;
 
 }
-
 
 @keyframes secretGlow {
 
@@ -1019,22 +966,11 @@ body {
 
         transform: rotate(-3deg);
 
-        box-shadow:
-
-            0 5px 0 #7658ad,
-            0 0 10px #ff72b6;
-
     }
 
     to {
 
         transform: rotate(3deg) scale(1.05);
-
-        box-shadow:
-
-            0 5px 0 #7658ad,
-            0 0 30px #ff72b6,
-            0 0 45px #9edfff;
 
     }
 
@@ -1061,7 +997,6 @@ body {
 
 }
 
-
 .controls-info span {
 
     background: white;
@@ -1075,11 +1010,9 @@ body {
     margin-right: 5px;
 
     box-shadow:
-
         0 3px 0 #9fdfff;
 
 }
-
 
 .mobile-controls {
 
@@ -1092,7 +1025,6 @@ body {
     margin-top: 20px;
 
 }
-
 
 .mobile-controls button {
 
@@ -1120,6 +1052,12 @@ body {
 
         0 5px 0 #7657ae;
 
+    touch-action: manipulation;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
 }
 
 
@@ -1141,7 +1079,6 @@ body {
 
 }
 
-
 .progress-item {
 
     padding: 12px;
@@ -1156,7 +1093,6 @@ body {
 
 }
 
-
 .progress-item span {
 
     display: block;
@@ -1169,24 +1105,20 @@ body {
 
 }
 
-
 .progress-item.active {
 
     color: #ff3f9d;
 
 }
 
-
 .progress-item.active span {
 
     color: #ff3f9d;
 
     text-shadow:
-
         0 0 8px #ff9dca;
 
 }
-
 
 .line {
 
@@ -1252,13 +1184,11 @@ body {
 
 }
 
-
 .hidden-song {
 
     display: none;
 
 }
-
 
 .song-cover {
 
@@ -1267,7 +1197,6 @@ body {
     aspect-ratio: 1;
 
 }
-
 
 .song-cover img {
 
@@ -1288,11 +1217,6 @@ body {
         0 12px 25px rgba(100,40,100,.2);
 
 }
-
-
-/* =========================================================
-   💿 VINILO
-========================================================= */
 
 .vinyl {
 
@@ -1331,11 +1255,9 @@ body {
     font-size: 35px;
 
     animation:
-
         spinVinyl 5s linear infinite;
 
 }
-
 
 @keyframes spinVinyl {
 
@@ -1348,7 +1270,6 @@ body {
 
 }
 
-
 .song-number {
 
     color: #ff3f9d;
@@ -1358,7 +1279,6 @@ body {
     letter-spacing: 3px;
 
 }
-
 
 .song-info h2 {
 
@@ -1377,7 +1297,6 @@ body {
         3px 3px #ff9ac8;
 
 }
-
 
 .song-info h3 {
 
@@ -1411,7 +1330,6 @@ body {
     border: 2px dashed #ff9fc9;
 
 }
-
 
 audio {
 
@@ -1461,7 +1379,6 @@ audio {
 
 }
 
-
 .lyrics-label {
 
     position: absolute;
@@ -1478,7 +1395,6 @@ audio {
 
 }
 
-
 .animated-lyrics {
 
     text-align: center;
@@ -1493,7 +1409,6 @@ audio {
 
 }
 
-
 .animated-word {
 
     display: inline-block;
@@ -1501,13 +1416,11 @@ audio {
     margin: 0 5px;
 
     animation:
-
         lyricWord .6s
         cubic-bezier(.17,.89,.32,1.49)
         both;
 
 }
-
 
 @keyframes lyricWord {
 
@@ -1548,7 +1461,6 @@ audio {
 
 }
 
-
 .song-navigation {
 
     text-align: center;
@@ -1578,23 +1490,19 @@ audio {
 
 }
 
-
 .lock-icon {
 
     font-size: 80px;
 
     filter:
-
         drop-shadow(
             4px 5px 0 white
         );
 
     animation:
-
         lockFloat 2s infinite ease-in-out;
 
 }
-
 
 @keyframes lockFloat {
 
@@ -1607,7 +1515,6 @@ audio {
     }
 
 }
-
 
 .unlock-container h2 {
 
@@ -1629,7 +1536,6 @@ audio {
 
 }
 
-
 .code-inputs {
 
     display: flex;
@@ -1641,7 +1547,6 @@ audio {
     margin: 35px 0;
 
 }
-
 
 .code-inputs input {
 
@@ -1677,7 +1582,6 @@ audio {
 
 }
 
-
 .code-inputs input:focus {
 
     border-color: #8edfff;
@@ -1691,7 +1595,6 @@ audio {
     transform: scale(1.07) rotate(-2deg);
 
 }
-
 
 #codeMessage {
 
@@ -1739,9 +1642,6 @@ audio {
 
 }
 
-
-/* Decoración de esquinas */
-
 .letter-container::before {
 
     content: "♡ ✦ ♡";
@@ -1762,7 +1662,6 @@ audio {
 
 }
 
-
 .letter-decoration {
 
     text-align: center;
@@ -1775,7 +1674,6 @@ audio {
 
 }
 
-
 .letter-date {
 
     text-align: right;
@@ -1785,7 +1683,6 @@ audio {
     font-style: italic;
 
 }
-
 
 .letter-container h1 {
 
@@ -1807,7 +1704,6 @@ audio {
 
 }
 
-
 .letter-text {
 
     font-size: 18px;
@@ -1818,13 +1714,11 @@ audio {
 
 }
 
-
 .letter-text p {
 
     margin-bottom: 25px;
 
 }
-
 
 .signature {
 
@@ -1862,13 +1756,11 @@ audio {
 
 }
 
-
 .final-overlay.hidden {
 
     display: none;
 
 }
-
 
 .final-background {
 
@@ -1892,7 +1784,6 @@ audio {
 
 }
 
-
 .final-sakura {
 
     position: absolute;
@@ -1908,7 +1799,6 @@ audio {
     opacity: .4;
 
 }
-
 
 .final-characters {
 
@@ -1931,7 +1821,6 @@ audio {
 
 }
 
-
 .final-characters img {
 
     width: 240px;
@@ -1941,18 +1830,15 @@ audio {
     object-fit: contain;
 
     transition:
-
         transform 2.3s
         cubic-bezier(.22,.61,.36,1);
 
     filter:
-
         drop-shadow(
             4px 5px 0 white
         );
 
 }
-
 
 #finalBoy {
 
@@ -1961,14 +1847,12 @@ audio {
 
 }
 
-
 #finalGirl {
 
     transform:
         translateX(280px);
 
 }
-
 
 .final-characters.approach #finalBoy {
 
@@ -1978,7 +1862,6 @@ audio {
 
 }
 
-
 .final-characters.approach #finalGirl {
 
     transform:
@@ -1986,7 +1869,6 @@ audio {
         scale(1.05);
 
 }
-
 
 #kissHeart {
 
@@ -2005,18 +1887,15 @@ audio {
     z-index: 5;
 
     transition:
-
         transform .6s
         cubic-bezier(.17,.89,.32,1.49);
 
     filter:
-
         drop-shadow(
             3px 4px 0 white
         );
 
 }
-
 
 #kissHeart.show {
 
@@ -2029,7 +1908,6 @@ audio {
 
 }
 
-
 @keyframes kissPulse {
 
     to {
@@ -2041,7 +1919,6 @@ audio {
     }
 
 }
-
 
 .final-message {
 
@@ -2065,7 +1942,6 @@ audio {
 
 }
 
-
 .final-message.show {
 
     opacity: 1;
@@ -2076,7 +1952,6 @@ audio {
 
 }
 
-
 .final-small {
 
     color: #ff3f9d;
@@ -2086,7 +1961,6 @@ audio {
     letter-spacing: 3px;
 
 }
-
 
 .final-message h1 {
 
@@ -2108,13 +1982,11 @@ audio {
 
 }
 
-
 .final-message h1 span {
 
     color: #ff3f9d;
 
 }
-
 
 .final-message > p:not(.final-small) {
 
@@ -2126,7 +1998,6 @@ audio {
 
 }
 
-
 .final-phrase {
 
     margin-top: 20px;
@@ -2136,7 +2007,6 @@ audio {
     color: #63356f;
 
 }
-
 
 .final-hearts {
 
@@ -2196,7 +2066,6 @@ audio {
 
 }
 
-
 #toast.show {
 
     transform:
@@ -2227,7 +2096,6 @@ audio {
 
     }
 
-
     .nav-buttons {
 
         overflow-x: auto;
@@ -2238,20 +2106,17 @@ audio {
 
     }
 
-
     .nav-buttons button {
 
         white-space: nowrap;
 
     }
 
-
     .section {
 
         padding-top: 145px;
 
     }
-
 
     .song-card {
 
@@ -2260,7 +2125,6 @@ audio {
         gap: 30px;
 
     }
-
 
     .song-cover {
 
@@ -2272,13 +2136,11 @@ audio {
 
     }
 
-
     .mobile-controls {
 
         display: flex;
 
     }
-
 
     .controls-info {
 
@@ -2286,13 +2148,11 @@ audio {
 
     }
 
-
     .letter-container {
 
         padding: 45px 25px;
 
     }
-
 
     .letter-container h1 {
 
@@ -2300,13 +2160,11 @@ audio {
 
     }
 
-
     .letter-text {
 
         font-size: 16px;
 
     }
-
 
     .final-characters img {
 
@@ -2316,7 +2174,6 @@ audio {
 
     }
 
-
     #finalBoy {
 
         transform:
@@ -2324,14 +2181,12 @@ audio {
 
     }
 
-
     #finalGirl {
 
         transform:
             translateX(160px);
 
     }
-
 
     .final-characters.approach #finalBoy {
 
@@ -2341,7 +2196,6 @@ audio {
 
     }
 
-
     .final-characters.approach #finalGirl {
 
         transform:
@@ -2350,13 +2204,11 @@ audio {
 
     }
 
-
     .final-message {
 
         bottom: 5%;
 
     }
-
 
     .final-message > p:not(.final-small) {
 
@@ -2367,6 +2219,10 @@ audio {
 }
 
 
+/* =========================================================
+   📱📱 TELÉFONO
+========================================================= */
+
 @media(max-width:500px) {
 
     .logo {
@@ -2374,7 +2230,6 @@ audio {
         font-size: 7px;
 
     }
-
 
     .nav-buttons button {
 
@@ -2384,13 +2239,11 @@ audio {
 
     }
 
-
     .game-hud {
 
         font-size: 11px;
 
     }
-
 
     .code-inputs input {
 
@@ -2400,19 +2253,520 @@ audio {
 
     }
 
-
     .code-inputs {
 
         gap: 8px;
 
     }
 
-
     .final-characters img {
 
         width: 130px;
 
         height: 200px;
+
+    }
+
+
+    /* =====================================================
+       🎮 BOTÓN SIGUIENTE — TELÉFONO VERTICAL
+    ===================================================== */
+
+    #nextSongButton {
+
+        display: block;
+
+        width: min(85vw, 300px);
+
+        min-height: 48px;
+
+        max-height: 60px;
+
+        padding: 10px 14px;
+
+        margin: 15px auto;
+
+        font-size: 9px;
+
+        line-height: 1.4;
+
+        border-radius: 18px;
+
+        position: relative;
+
+        z-index: 99999;
+
+        pointer-events: auto;
+
+        touch-action: manipulation;
+
+        -webkit-tap-highlight-color: transparent;
+
+    }
+
+
+    /* TARJETA DEL OVERLAY */
+
+    .overlay-card {
+
+        width: 92%;
+
+        max-width: 350px;
+
+        max-height: 88vh;
+
+        overflow-y: auto;
+
+        padding: 20px 15px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .overlay-card h2 {
+
+        font-size: 12px;
+
+        line-height: 1.6;
+
+        margin: 10px 0;
+
+    }
+
+
+    .big-flower {
+
+        font-size: 42px;
+
+    }
+
+
+    .secret-letter {
+
+        width: 65px;
+
+        height: 65px;
+
+        font-size: 25px;
+
+        margin: 12px auto;
+
+    }
+
+
+    /* CONTROLES */
+
+    .mobile-controls {
+
+        position: relative;
+
+        z-index: 100;
+
+        gap: 10px;
+
+        margin-top: 12px;
+
+    }
+
+    .mobile-controls button {
+
+        width: 58px;
+
+        height: 52px;
+
+        font-size: 22px;
+
+        border-radius: 17px;
+
+        touch-action: manipulation;
+
+    }
+
+}
+
+
+/* =========================================================
+   📱📱 TELÉFONO HORIZONTAL
+========================================================= */
+
+@media(max-width:850px) and (orientation: landscape) {
+
+    body {
+
+        overflow-x: hidden;
+
+        overflow-y: auto;
+
+    }
+
+
+    .navbar {
+
+        position: relative;
+
+        top: 5px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .section {
+
+        min-height: auto;
+
+        padding-top: 20px;
+
+        padding-bottom: 30px;
+
+    }
+
+
+    .game-wrapper {
+
+        width: 96%;
+
+        max-width: none;
+
+        margin: 0 auto;
+
+    }
+
+
+    .game-hud {
+
+        padding: 7px 12px;
+
+        font-size: 10px;
+
+        min-height: 35px;
+
+    }
+
+
+    .canvas-container {
+
+        width: 100%;
+
+        max-height: 62vh;
+
+    }
+
+
+    #gameCanvas {
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: 62vh;
+
+        object-fit: contain;
+
+    }
+
+
+    /* =====================================================
+       🎮 OVERLAY HORIZONTAL
+    ===================================================== */
+
+    .game-overlay {
+
+        position: absolute;
+
+        inset: 0;
+
+        padding: 8px;
+
+        z-index: 100;
+
+        align-items: center;
+
+        justify-content: center;
+
+    }
+
+
+    .overlay-card {
+
+        width: min(70%, 420px);
+
+        max-width: 420px;
+
+        max-height: 92%;
+
+        overflow-y: auto;
+
+        padding: 12px 18px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .overlay-card h2 {
+
+        font-size: 11px;
+
+        line-height: 1.4;
+
+        margin: 7px 0;
+
+    }
+
+
+    .big-flower {
+
+        font-size: 35px;
+
+    }
+
+
+    .secret-letter {
+
+        width: 55px;
+
+        height: 55px;
+
+        font-size: 22px;
+
+        margin: 8px auto;
+
+    }
+
+
+    /* =====================================================
+       💗 BOTÓN SIGUIENTE HORIZONTAL
+    ===================================================== */
+
+    #nextSongButton {
+
+        display: block;
+
+        width: min(70vw, 270px);
+
+        min-height: 40px;
+
+        max-height: 50px;
+
+        padding: 7px 10px;
+
+        margin: 8px auto 3px;
+
+        font-size: 8px;
+
+        line-height: 1.3;
+
+        border-radius: 14px;
+
+        position: relative;
+
+        z-index: 99999;
+
+        pointer-events: auto;
+
+        touch-action: manipulation;
+
+        -webkit-tap-highlight-color: transparent;
+
+    }
+
+
+    /* =====================================================
+       🎮 CONTROLES HORIZONTALES
+    ===================================================== */
+
+    .mobile-controls {
+
+        display: flex;
+
+        gap: 10px;
+
+        margin-top: 8px;
+
+        margin-bottom: 5px;
+
+        position: relative;
+
+        z-index: 100;
+
+    }
+
+
+    .mobile-controls button {
+
+        width: 52px;
+
+        height: 45px;
+
+        font-size: 19px;
+
+        border-radius: 14px;
+
+        touch-action: manipulation;
+
+    }
+
+
+    /* OCULTAR COSAS QUE PUEDEN ROBAR ESPACIO */
+
+    .controls-info {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   📱📱 TELÉFONOS MUY PEQUEÑOS HORIZONTALES
+========================================================= */
+
+@media(max-width:700px) and (orientation: landscape) and (max-height:500px) {
+
+    .navbar {
+
+        min-height: 48px;
+
+        padding: 5px 8px;
+
+        gap: 4px;
+
+    }
+
+
+    .logo {
+
+        font-size: 6px;
+
+    }
+
+
+    .nav-buttons {
+
+        gap: 4px;
+
+    }
+
+
+    .nav-buttons button {
+
+        font-size: 9px;
+
+        padding: 5px 7px;
+
+    }
+
+
+    .section {
+
+        padding-top: 10px;
+
+    }
+
+
+    .game-hud {
+
+        min-height: 28px;
+
+        padding: 5px 8px;
+
+        font-size: 9px;
+
+    }
+
+
+    .canvas-container {
+
+        max-height: 65vh;
+
+    }
+
+
+    #gameCanvas {
+
+        max-height: 65vh;
+
+    }
+
+
+    .overlay-card {
+
+        width: min(75%, 360px);
+
+        padding: 8px 12px;
+
+    }
+
+
+    .overlay-card h2 {
+
+        font-size: 9px;
+
+        margin: 4px 0;
+
+    }
+
+
+    .big-flower {
+
+        font-size: 25px;
+
+    }
+
+
+    .secret-letter {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 17px;
+
+        margin: 4px auto;
+
+    }
+
+
+    #nextSongButton {
+
+        width: min(65vw, 230px);
+
+        min-height: 34px;
+
+        max-height: 42px;
+
+        padding: 5px 8px;
+
+        margin: 5px auto 2px;
+
+        font-size: 7px;
+
+        border-radius: 11px;
+
+    }
+
+
+    .mobile-controls {
+
+        margin-top: 5px;
+
+        gap: 7px;
+
+    }
+
+
+    .mobile-controls button {
+
+        width: 45px;
+
+        height: 38px;
+
+        font-size: 17px;
+
+        border-radius: 12px;
 
     }
 
