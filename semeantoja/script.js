@@ -38,22 +38,6 @@ yoImg.src = "yo-removebg-preview.png";
    🎵 AUDIO
 ===================================================== */
 
-/*
-   Los MP3 se colocan directamente en:
-
-   audio/
-   ├── noche-de-los-dos.mp3
-   ├── se-me-antoja.mp3
-   └── sexto-sentido.mp3
-
-   La música está definida directamente
-   en el HTML mediante <audio>.
-
-   Este código solamente sirve para pausar
-   cualquier canción cuando se cambia de sección.
-*/
-
-
 function pauseAllMusic(){
 
     const audios =
@@ -65,6 +49,69 @@ function pauseAllMusic(){
         audio.pause();
 
     });
+
+}
+
+
+/* =====================================================
+   📱 AJUSTES PARA MÓVIL
+===================================================== */
+
+function prepareMobileButton(){
+
+    const button =
+        document.getElementById("nextSongButton");
+
+
+    if(!button){
+
+        return;
+
+    }
+
+
+    /*
+       Permite tocar el botón correctamente
+       en pantallas táctiles.
+    */
+
+    button.style.touchAction = "manipulation";
+
+    button.style.pointerEvents = "auto";
+
+    button.style.position = "relative";
+
+    button.style.zIndex = "99999";
+
+
+    /*
+       Evita que el navegador interprete
+       el toque como zoom o selección.
+    */
+
+    button.addEventListener(
+        "touchstart",
+        event => {
+
+            event.stopPropagation();
+
+        },
+        { passive: true }
+    );
+
+
+    button.addEventListener(
+        "touchend",
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            continueFromSong();
+
+        }
+    );
 
 }
 
@@ -146,11 +193,6 @@ function hideSections(){
 
 
 function showSection(id){
-
-    /*
-       ⏸️ PAUSAR TODA LA MÚSICA
-       cada vez que cambiamos de sección.
-    */
 
     pauseAllMusic();
 
@@ -512,6 +554,24 @@ let currentLevelData;
 
 
 /* =====================================================
+   🌸 COPIAR PÉTALOS ORIGINALES
+===================================================== */
+
+levels.forEach(
+    level => {
+
+        level.originalPetals =
+            level.petals.map(
+                petal => ({
+                    ...petal
+                })
+            );
+
+    }
+);
+
+
+/* =====================================================
    INICIAR NIVEL
 ===================================================== */
 
@@ -519,6 +579,19 @@ function startGame(){
 
     currentLevelData =
         levels[currentLevel - 1];
+
+
+    /*
+       Restaurar pétalos
+       cada vez que empieza el nivel.
+    */
+
+    currentLevelData.petals =
+        currentLevelData.originalPetals.map(
+            petal => ({
+                ...petal
+            })
+        );
 
 
     gameRunning = true;
@@ -539,7 +612,7 @@ function startGame(){
     document.getElementById(
         "petalTotal"
     ).textContent =
-        currentLevelData.petals.length;
+        currentLevelData.originalPetals.length;
 
 
     document.getElementById(
@@ -707,7 +780,8 @@ function mobileButton(button, key){
 
             keys[key] = true;
 
-        }
+        },
+        { passive: false }
     );
 
 
@@ -719,7 +793,8 @@ function mobileButton(button, key){
 
             keys[key] = false;
 
-        }
+        },
+        { passive: false }
     );
 
 
@@ -728,6 +803,32 @@ function mobileButton(button, key){
         event => {
 
             event.preventDefault();
+
+            keys[key] = false;
+
+        },
+        { passive: false }
+    );
+
+
+    /*
+       También funciona con mouse,
+       útil para probar desde PC.
+    */
+
+    element.addEventListener(
+        "mousedown",
+        () => {
+
+            keys[key] = true;
+
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseup",
+        () => {
 
             keys[key] = false;
 
@@ -833,8 +934,6 @@ function updatePlayer(){
     player.y += player.vy;
 
 
-    /* LIMITES */
-
     if(player.x < 0){
 
         player.x = 0;
@@ -857,8 +956,6 @@ function updatePlayer(){
 
     player.grounded = false;
 
-
-    /* PLATAFORMAS */
 
     for(
         const platform
@@ -905,8 +1002,6 @@ function updatePlayer(){
 
     }
 
-
-    /* CAÍDA */
 
     if(
         player.y >
@@ -1015,8 +1110,7 @@ function collectPetals(){
 
 
             const count =
-                levels[currentLevel - 1]
-                .originalPetals.length -
+                currentLevelData.originalPetals.length -
                 currentLevelData.petals.length;
 
 
@@ -1131,11 +1225,62 @@ function finishLevel(){
         `Esta es la letra ${completedLetters.length} de 3. Guarda bien este secreto ♡`;
 
 
-    document
-        .getElementById(
+    const overlay =
+        document.getElementById(
             "levelOverlay"
-        )
-        .classList.remove("hidden");
+        );
+
+
+    overlay.classList.remove(
+        "hidden"
+    );
+
+
+    /*
+       📱 En celular llevamos el botón
+       al centro de la pantalla.
+    */
+
+    const button =
+        document.getElementById(
+            "nextSongButton"
+        );
+
+
+    if(button){
+
+        button.style.position =
+            "relative";
+
+        button.style.zIndex =
+            "99999";
+
+        button.style.pointerEvents =
+            "auto";
+
+        button.style.touchAction =
+            "manipulation";
+
+
+        /*
+           Esperamos un poquito para que
+           el navegador termine de mostrar
+           el overlay.
+        */
+
+        setTimeout(() => {
+
+            button.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 100);
+
+    }
 
 }
 
@@ -1170,11 +1315,6 @@ function showSong(number){
     currentSong =
         number;
 
-
-    /*
-       Nos aseguramos de que no quede
-       ninguna canción sonando.
-    */
 
     pauseAllMusic();
 
@@ -1269,6 +1409,20 @@ function showSong(number){
 
         }
 
+
+        /*
+           Asegurar funcionamiento táctil.
+        */
+
+        button.style.touchAction =
+            "manipulation";
+
+        button.style.pointerEvents =
+            "auto";
+
+        button.style.zIndex =
+            "99999";
+
     }
 
 }
@@ -1280,12 +1434,26 @@ function showSong(number){
 
 function continueFromSong(){
 
+    pauseAllMusic();
+
+
     /*
-       ⏸️ Pausar la canción antes
-       de cambiar de sección.
+       Evitamos que se pueda ejecutar
+       dos veces por accidente.
     */
 
-    pauseAllMusic();
+    const button =
+        document.getElementById(
+            "nextSongButton"
+        );
+
+
+    if(button){
+
+        button.style.pointerEvents =
+            "none";
+
+    }
 
 
     if(currentSong < 3){
@@ -1293,13 +1461,41 @@ function continueFromSong(){
         currentLevel++;
 
 
-        showGame();
+        /*
+           Pequeña espera para que
+           el cambio se vea correctamente
+           en celular.
+        */
+
+        setTimeout(() => {
+
+            if(button){
+
+                button.style.pointerEvents =
+                    "auto";
+
+            }
+
+            showGame();
+
+        }, 150);
 
     }
 
     else{
 
-        showSection("unlock");
+        setTimeout(() => {
+
+            if(button){
+
+                button.style.pointerEvents =
+                    "auto";
+
+            }
+
+            showSection("unlock");
+
+        }, 150);
 
     }
 
@@ -1475,11 +1671,6 @@ function checkCode(){
 
 function startFinale(){
 
-    /*
-       Por si alguna canción estuviera sonando,
-       la detenemos antes del final.
-    */
-
     pauseAllMusic();
 
 
@@ -1527,10 +1718,6 @@ function startFinale(){
     );
 
 
-    /*
-       LOS PERSONAJES ENTRAN
-    */
-
     setTimeout(() => {
 
         characters.classList.add(
@@ -1540,10 +1727,6 @@ function startFinale(){
     }, 300);
 
 
-    /*
-       CORAZÓN / BESO
-    */
-
     setTimeout(() => {
 
         heart.classList.add(
@@ -1552,10 +1735,6 @@ function startFinale(){
 
     }, 2300);
 
-
-    /*
-       MENSAJE FINAL
-    */
 
     setTimeout(() => {
 
@@ -1621,8 +1800,6 @@ function showToast(message){
 ===================================================== */
 
 function drawGameBackground(){
-
-    /* CIELO */
 
     const gradient =
         ctx.createLinearGradient(
@@ -1867,8 +2044,6 @@ function drawSakuraTree(
     );
 
 
-    /* TRONCO */
-
     ctx.fillStyle =
         "#76505b";
 
@@ -1880,8 +2055,6 @@ function drawSakuraTree(
         170
     );
 
-
-    /* RAMAS */
 
     ctx.strokeStyle =
         "#76505b";
@@ -1920,8 +2093,6 @@ function drawSakuraTree(
 
     ctx.stroke();
 
-
-    /* FLORES */
 
     const flowers = [
 
@@ -2054,8 +2225,6 @@ function drawPlatforms(){
                     platform.y >= 480;
 
 
-                /* TIERRA */
-
                 ctx.fillStyle =
                     isGround
                     ? "#c48a72"
@@ -2070,8 +2239,6 @@ function drawPlatforms(){
                 );
 
 
-                /* HIERBA */
-
                 ctx.fillStyle =
                     "#78ad76";
 
@@ -2083,8 +2250,6 @@ function drawPlatforms(){
                     8
                 );
 
-
-                /* FLORES */
 
                 for(
                     let x =
@@ -2150,8 +2315,6 @@ function drawImageContain(
         !image.complete ||
         image.naturalWidth === 0
     ){
-
-        /* FALLBACK */
 
         ctx.fillStyle =
             "#ff72b6";
@@ -2219,8 +2382,6 @@ function drawImageContain(
 
 function drawCharacters(){
 
-    /* NOVIO */
-
     drawImageContain(
         novioImg,
         player.x,
@@ -2229,8 +2390,6 @@ function drawCharacters(){
         player.height
     );
 
-
-    /* YO */
 
     drawImageContain(
         yoImg,
@@ -2301,53 +2460,9 @@ function drawEverything(){
 
 
 /* =====================================================
-   🌸 COPIAR PÉTALOS ORIGINALES
-===================================================== */
-
-levels.forEach(
-    level => {
-
-        level.originalPetals =
-            level.petals.map(
-                petal => ({
-                    ...petal
-                })
-            );
-
-    }
-);
-
-
-/* =====================================================
-   🔄 REPARAR PÉTALOS AL INICIAR
-===================================================== */
-
-const originalStartGame =
-    startGame;
-
-
-startGame =
-    function(){
-
-        const level =
-            levels[currentLevel - 1];
-
-
-        level.petals =
-            level.originalPetals.map(
-                petal => ({
-                    ...petal
-                })
-            );
-
-
-        originalStartGame();
-
-    };
-
-
-/* =====================================================
    🚀 INICIAL
 ===================================================== */
+
+prepareMobileButton();
 
 showSection("home");
